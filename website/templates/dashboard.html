@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+<br/>
+<br/>
+<h1 align="center" style="color: black; font-family: monospace; font-size: 40px;">Quizzes</h1>
+<br/>
+<br/>
+<ul class="list-group list-group-flush" id="quizzes">
+    {% for quiz in user.quizzes %}
+    <li class="list-group-item">
+        <span class="label font-weight-bold"><mark>{{'Q: ' + quiz.question}}</mark></span><br/>
+        <input type="checkbox" id="answer1_is_correct" name="answer1_is_correct">
+        <label for="answer1_is_correct">{{'a. ' + quiz.answer1}}</label><br>
+
+        <input type="checkbox" id="answer2_is_correct" name="answer2_is_correct">
+        <label for="answer2_is_correct">{{'b. ' + quiz.answer2}}</label><br>
+
+        <input type="checkbox" id="answer3_is_correct" name="answer3_is_correct">
+        <label for="answer3_is_correct">{{'c. ' + quiz.answer3}}</label><br>
+
+        <input type="checkbox" id="answer4_is_correct" name="answer4_is_correct">
+        <label for="answer4_is_correct">{{'d. ' + quiz.answer4}}</label><br>
+
+      <button type="button" class="close" onClick="deleteQuiz({{ quiz.id }})">
+          <span area-hidden="true" style="color:rgb(141, 4, 4);">delete</span>
+      </button>
+
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

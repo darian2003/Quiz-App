@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- import bootstrap (css framework) -->
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous"
+    />
+
+    <style>
+        .navbar-custom{
+            background-color: darkcyan;
+        }
+
+        .footer {
+            font-family:'Trebuchet MS';
+            font-size: 15px;
+            position: fixed;
+            left: 45%;
+            bottom: 0;
+            text-align: center;
+            padding: 3px;
+            color:black;
+        }
+
+        h2{
+            text-align: center;
+            color: black; 
+            font-family: "arial";
+            font-size: 3em;
+            margin: 10px 0 0 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100%;
+            animation: animtext 4s steps(80, end); 
+            transition: all cubic-bezier(0.1, 0.7, 1.0, 0.1);
+            }
+
+            @keyframes animtext { 
+            from {
+                width: 0;
+                transition: all 2s ease-in-out;
+            } 
+            }
+
+    </style>
+
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous"
+    />
+
+    <title>{% block title %}Home{% endblock %}</title>
+
+</head>
+   
+<body style="background-color:gainsboro;">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" id="home" href="/" style="color: black; font-family: monospace; font-size: 25px;">  HOME  </a>
+          {% if user.is_authenticated %}
+            <a class="nav-item nav-link" id="dashboard" href="/dashboard" style="color: black; font-family: monospace; font-size: 25px;">DASHBOARD</a>
+            <a class="nav-item nav-link" id="logout" href="/logout" style="color: black; font-family: monospace; font-size: 25px;">  LOGOUT  </a>
+            <a class="nav-item nav-link" id="credentials" href="/credentials" style="color: black; font-family: monospace; font-size: 25px;">{{user.email}}</a>
+
+          {% else %}
+            <a class="nav-item nav-link" id="login" href="/login" style="color: black; font-family: monospace; font-size: 25px;">LOGIN</a>
+            <a class="nav-item nav-link" id="signUp" href="/sign-up" style="color: black; font-family: monospace; font-size: 25px;">SIGN UP</a>
+          {% endif %}
+        </div>
+       </div>
+    </nav>
+
+
+    {% with messages = get_flashed_messages(with_categories=true) %} 
+    {% if messages %} 
+    {% for category, message in messages %}
+        {% if category == 'error' %}
+        <div class="alert alert-danger alter-dismissable fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% else %}
+        <div class="alert alert-success alter-dismissable fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endif %} 
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div class="footer">
+        <p>@2023 Informatica Aplicata 4</p>
+    </div>
+
+
+    <!-- load the JavaScript scripts needed for Bootstrap -->
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"
+    ></script>
+    <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"
+    ></script>
+
+    <script
+        type="text/javascript"
+        src="{{ url_for('static', filename='index.js') }}"
+    ></script>
+   
+</body>
+
+
+</html>

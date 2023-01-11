@@ -1,0 +1,14 @@
+To run the ap:
+    python3 main.py
+
+Website running on: http://127.0.0.1:5000/
+
+Resources:
+[1] https://docs.python.org/3/
+[2] https://flask.palletsprojects.com/en/2.2.x/templating/
+[3] https://getbootstrap.com/docs/4.0/
+[4] https://www.youtube.com/watch?v=dam0GPOAvVI
+[5] https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/
+
+flask-sqlalchemy -> wrapper module for sql
+sqlalchemy -> library used for interacting with database

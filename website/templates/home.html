@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+QuizApp
+{% endblock %}
+
+{% block content %}
+<br/>
+<br/>
+<h1 align="center" style="color: black; font-family: monospace; font-size: 40px;">Add a new quiz!</h1>
+<br/>
+<br/>
+
+<form method='POST'>
+    <input type="text" name="question" id="question" class="form-control" placeholder="Question">
+    <input type="text" name="answer1" id="answer1" class="form-control" placeholder="Answer 1">
+    <input type="text" name="answer2" id="answer2" class="form-control" placeholder="Answer 2">
+    <input type="text" name="answer3" id="answer3" class="form-control" placeholder="Answer 3">
+    <input type="text" name="answer4" id="answer4" class="form-control" placeholder="Answer 4">
+    <br />
+
+    <div align="center">
+    <button type="button" class="btn btn-info btn-block" onclick="addQuestion()">Add a new question</button>
+        <button type="submit" class="btn btn-dark btn-block">Create new quiz</button>
+    </div>
+</form>
+{% endblock %}
