@@ -9,6 +9,3 @@ Resources:
 [3] https://getbootstrap.com/docs/4.0/
 [4] https://www.youtube.com/watch?v=dam0GPOAvVI
 [5] https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/
-
-flask-sqlalchemy -> wrapper module for sql
-sqlalchemy -> library used for interacting with database
