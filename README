@@ -1,4 +1,6 @@
-To run the ap:
+For README check file README.pdf
+
+To run the app:
     python3 main.py
 
 Website running on: http://127.0.0.1:5000/
